@@ -6,7 +6,7 @@ import ReactLogo from '/src/assets/react.svg';
 function App() {
   return (
     <>
-      <HomeScreen h1Style="maintitle" pText="Un paragraphe" imgSrc={ViteLogo} imgAlt="Logo Vite"/>
+      <HomeScreen h1Style="mainTitle" pText="Un paragraphe" imgSrc={ViteLogo} imgAlt="Logo Vite"/>
       <HomeScreen h1Style="blue" pText="Un autre paragraphe" imgSrc={ReactLogo} imgAlt="Logo React"/>
     </>
   );
