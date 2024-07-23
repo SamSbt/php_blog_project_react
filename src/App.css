@@ -1,3 +1,4 @@
-h1 {
-  color: blue;
+.nav-link.active {
+  color: blue !important;
+  text-decoration: underline;
 }
