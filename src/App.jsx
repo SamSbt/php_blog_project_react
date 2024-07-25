@@ -1,16 +1,19 @@
-import './App.css'
-import HomeScreen from './screens/home/HomeScreen'
-import ViteLogo from '/vite.svg';
-import ReactLogo from '/src/assets/react.svg';
-import Navbar from './components/navbar/Navbar';
+import "./App.css";
+import Navbar from "./components/navbar/Navbar";
+
+import HomeScreen from "./screens/home/HomeScreen";
+import ArticleScreen from "./screens/home/ArticleScreen";
 
 function App() {
-  return (
-    <>
-      <Navbar />
-      <HomeScreen />
-    </>
-  );
+	return (
+		<>
+			<Navbar />
+			<div className="container">
+				{/* <HomeScreen /> */}
+				<ArticleScreen />
+			</div>
+		</>
+	);
 }
 
 export default App;
