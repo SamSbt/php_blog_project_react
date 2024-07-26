@@ -35,7 +35,7 @@ function ArticleScreen() {
 					<div className="col-12 px-5">
 						<div className="text-center mb-3">
 							<h1>{data.title}</h1>
-							<img src={data.img_src} alt={data.title} width={300}/>
+							<img src={data.img_src} alt={data.title} width={300} />
 						</div>
 						<p style={{ textAlign: "justify" }}>{data.summary}</p>
 						<p>
