@@ -28,6 +28,7 @@ function ArticleCard(props) {
 		</>
 	);
 }
+
 ArticleCard.propTypes = {
 	article: PropTypes.shape({
 		id_article: PropTypes.number.isRequired,
@@ -38,7 +39,7 @@ ArticleCard.propTypes = {
 		updated_at: PropTypes.string,
 		is_deleted: PropTypes.bool,
 		id_appuser: PropTypes.number.isRequired,
-		id_serie: number,
+		id_serie: PropTypes.number,
 	}),
 };
 

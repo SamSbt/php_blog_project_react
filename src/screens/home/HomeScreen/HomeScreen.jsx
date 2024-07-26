@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ArticleCard from "../../components/articleCard/ArticleCard";
+import ArticleCard from "../../../components/articleCard/ArticleCard";
 import "./HomeScreen.css";
 
 function HomeScreen() {
@@ -15,9 +15,11 @@ function HomeScreen() {
 					throw new Error("Erreur de réseau");
 				}
 				const result = await response.json();
-				const lastPublishedArticles = result.sort((a, b) => {
-				return new Date(b.published_at) - new Date (a.published_at)
-				}).slice(0, 12)
+				const lastPublishedArticles = result
+					.sort((a, b) => {
+						return new Date(b.published_at) - new Date(a.published_at);
+					})
+					.slice(0, 12);
 				console.log(lastPublishedArticles);
 				setData(lastPublishedArticles || []);
 			} catch (error) {
@@ -33,14 +35,14 @@ function HomeScreen() {
 	return (
 		<>
 			<main className="mt-5 pt-3 mx-5 row">
-				{loading &&
+				{loading && (
 					<p className="col-12 text-center">Chargement des données...</p>
-				}
-				{(data.length > 0)
-				? (data.map((item, i) => <ArticleCard key={i} article={item} />))
-				: !loading && 
-						<p className="col-12 text-center">Aucun article trouvé.</p>
-				}
+				)}
+				{data.length > 0
+					? data.map((item, i) => <ArticleCard key={i} article={item} />)
+					: !loading && (
+							<p className="col-12 text-center">Aucun article trouvé.</p>
+					  )}
 			</main>
 		</>
 	);
