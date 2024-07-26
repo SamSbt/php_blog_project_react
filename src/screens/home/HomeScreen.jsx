@@ -3,20 +3,23 @@ import ArticleCard from "../../components/articleCard/ArticleCard";
 import "./HomeScreen.css";
 
 function HomeScreen() {
-	const [data, setData] = useState({});
+	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const url = "http://api.php-blog-project.loc/article/12";
+				const url = "http://api.php-blog-project.loc/article";
 				const response = await fetch(url);
 				if (!response.ok) {
-					throw new error("Erreur de réseau");
+					throw new Error("Erreur de réseau");
 				}
 				const result = await response.json();
-				console.log(result);
-				setData(result || {});
+				const lastPublishedArticles = result.sort((a, b) => {
+				return new Date(b.published_at) - new Date (a.published_at)
+				}).slice(0, 12)
+				console.log(lastPublishedArticles);
+				setData(lastPublishedArticles || []);
 			} catch (error) {
 				console.log(error);
 			} finally {
@@ -33,8 +36,8 @@ function HomeScreen() {
 				{loading &&
 					<p className="col-12 text-center">Chargement des données...</p>
 				}
-				{("id_article" in data) 
-        ? <ArticleCard article={data} />
+				{(data.length > 0)
+				? (data.map((item, i) => <ArticleCard key={i} article={item} />))
 				: !loading && 
 						<p className="col-12 text-center">Aucun article trouvé.</p>
 				}

@@ -9,8 +9,8 @@ function App() {
 		<>
 			<Navbar />
 			<div className="container">
-				{/* <HomeScreen /> */}
-				<ArticleScreen />
+				<HomeScreen />
+				{/* <ArticleScreen /> */}
 			</div>
 		</>
 	);

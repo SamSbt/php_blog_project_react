@@ -10,7 +10,7 @@ function ArticleScreen() {
 				const url = "http://api.php-blog-project.loc/article/12";
 				const response = await fetch(url);
 				if (!response.ok) {
-					throw new error("Erreur de réseau");
+					throw new Error("Erreur de réseau");
 				}
 				const result = await response.json();
 				console.log(result);
@@ -27,7 +27,7 @@ function ArticleScreen() {
 
 	return (
 		<>
-			<main class="mt-5 pt-3 row">
+			<main className="mt-5 pt-3 row">
 				{loading && (
 					<p className="col-12 text-center">Chargement des données...</p>
 				)}
