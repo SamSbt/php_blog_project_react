@@ -17,7 +17,7 @@ function TechsScreen() {
 				result.sort((a, b) => {
 					return a.label < b.label ? -1 : 1;
 				});
-				console.log(result);
+				// console.log(result);
 				setData(result || []);
 			} catch (error) {
 				console.log(error);

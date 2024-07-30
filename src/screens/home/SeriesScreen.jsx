@@ -17,7 +17,7 @@ function SeriesScreen() {
 				result.sort((a, b) => {
 					return a.title < b.title ? -1 : 1;
 				});
-				console.log(result);
+				// console.log(result);
 				setData(result || []);
 			} catch (error) {
 				console.log(error);

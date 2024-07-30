@@ -1,26 +1,20 @@
 import PropTypes from "prop-types";
+import Card from "./Card";
 
 function SerieCard(props) {
 	const { serie } = props;
 	return (
 		<>
-			<div className="col-12 col-md-6 col-lg-3 d-flex align-items-stretch justify-content-center">
-				<div className="card mb-3" style={{ width: "18rem" }}>
-					<img src={serie.img_src} className="card-img-top" alt={serie.title} />
-					<div className="card-body text-center">
-						<h5 className="card-title">{serie.title}</h5>
-						<p className="card-text" style={{ textAlign: "justify" }}>
-							{serie.summary}
-						</p>
-						<a
-							href={"series/details/" + serie.id_serie}
-							className="btn btn-primary"
-						>
-							Lire
-						</a>
-					</div>
-				</div>
-			</div>
+			<Card
+				title={serie.title}
+				imgSrc={serie.img_src}
+				link={"series/details/" + serie.id_serie}
+				btnText="Voir"
+			>
+				<p className="card-text" style={{ textAlign: "justify" }}>
+					{serie.summary}
+				</p>
+			</Card>
 		</>
 	);
 }

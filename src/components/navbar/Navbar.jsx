@@ -5,10 +5,10 @@ function Navbar() {
   const [activeLink, setActiveLink] = useState("/home");
 
   const handleNavLinkClick = (event) => {
-    event.preventDefault();
-    console.log("href=" + event.target.href);
+    // event.preventDefault();
+    // console.log("href=" + event.target.href);
     const url = new URL(event.target.href);
-    console.log("path=" + url.pathname);
+    // console.log("path=" + url.pathname);
     setActiveLink(url.pathname);
   }
 	return (

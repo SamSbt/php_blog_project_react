@@ -13,7 +13,7 @@ function ArticleScreen() {
 					throw new Error("Erreur de réseau");
 				}
 				const result = await response.json();
-				console.log(result);
+				// console.log(result);
 				setData(result || {});
 			} catch (error) {
 				console.log(error);
