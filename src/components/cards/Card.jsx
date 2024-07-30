@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-function Card({children, title, imgSrc, link, btnText}) {
+function Card({ children, title, imgSrc, link, btnText }) {
 	return (
 		<>
-			<div className="col-12 col-md-6 col-lg-3 d-flex align-items-stretch justify-content-center">
+			<div className="c col-md-6 col-lg-3 d-flex align-items-stretch justify-content-center">
 				<div className="card mb-3" style={{ width: "18rem" }}>
 					<img src={imgSrc} className="card-img-top" alt={title} />
 					<div className="card-body text-center">

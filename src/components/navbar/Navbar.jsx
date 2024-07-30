@@ -2,15 +2,16 @@ import { useState } from "react";
 import Contact from "../contact/Contact";
 
 function Navbar() {
-  const [activeLink, setActiveLink] = useState("/home");
+	const [activeLink, setActiveLink] = useState("/home");
 
-  const handleNavLinkClick = (event) => {
-    // event.preventDefault();
-    // console.log("href=" + event.target.href);
-    const url = new URL(event.target.href);
-    // console.log("path=" + url.pathname);
-    setActiveLink(url.pathname);
-  }
+	const handleNavLinkClick = (event) => {
+		event.preventDefault();
+		console.log("href=" + event.target.href);
+		const url = new URL(event.target.href);
+		console.log("path=" + url.pathname);
+		setActiveLink(url.pathname);
+	};
+
 	return (
 		<>
 			<nav className="navbar navbar-expand-lg fixed-top bg-light">
@@ -36,7 +37,6 @@ function Navbar() {
 									className={
 										"nav-link" + (activeLink == "/home" ? " active" : "")
 									}
-									aria-current="page"
 									href="/home"
 									onClick={handleNavLinkClick}
 								>

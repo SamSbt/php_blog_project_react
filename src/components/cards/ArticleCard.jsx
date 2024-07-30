@@ -2,17 +2,17 @@ import PropTypes from "prop-types";
 import Card from "./Card";
 
 function ArticleCard(props) {
-	const { article } = props;
+	const { data } = props;
 	return (
 		<>
 			<Card
-				title={article.title}
-				imgSrc={article.img_src}
-				link={"articles/details/" + article.id_article}
+				title={data.title}
+				imgSrc={data.img_src}
+				link={"articles/details/" + data.id_article}
 				btnText="Lire"
 			>
 				<p className="card-text" style={{ textAlign: "justify" }}>
-					{article.summary}
+					{data.summary}
 				</p>
 			</Card>
 		</>
@@ -20,7 +20,7 @@ function ArticleCard(props) {
 }
 
 ArticleCard.propTypes = {
-	article: PropTypes.shape({
+	data: PropTypes.shape({
 		id_article: PropTypes.number.isRequired,
 		title: PropTypes.string,
 		summary: PropTypes.string,

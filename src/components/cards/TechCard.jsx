@@ -10,8 +10,7 @@ function TechCard(props) {
 				imgSrc={tech.img_src}
 				link={"techs/details/" + tech.id_tech}
 				btnText="Voir"
-			>
-			</Card>
+			/>
 		</>
 	);
 }

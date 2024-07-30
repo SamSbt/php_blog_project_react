@@ -1,27 +1,19 @@
-import { useState, useEffect } from "react";
-import ArticleCard from "../../../components/cards/ArticleCard";
-import "./HomeScreen.css";
+import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
-function HomeScreen() {
+function ListScreen({ apiUrl, title, Card }) {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const url = "http://api.php-blog-project.loc/article";
-				const response = await fetch(url);
+				const response = await fetch(apiUrl);
 				if (!response.ok) {
 					throw new Error("Erreur de réseau");
 				}
 				const result = await response.json();
-				const lastPublishedArticles = result
-					.sort((a, b) => {
-						return new Date(b.published_at) - new Date(a.published_at);
-					})
-					.slice(0, 12);
-				console.log(lastPublishedArticles);
-				setData(lastPublishedArticles || []);
+				setData(result || []);
 			} catch (error) {
 				console.log(error);
 			} finally {
@@ -35,11 +27,12 @@ function HomeScreen() {
 	return (
 		<>
 			<main className="mt-5 pt-3 mx-5 row">
+        <h2 className="text-center">{title}</h2>
 				{loading && (
 					<p className="col-12 text-center">Chargement des données...</p>
 				)}
 				{data.length > 0
-					? data.map((item, i) => <ArticleCard key={i} article={item} />)
+					? data.map((item, i) => <Card key={i} data={item} />)
 					: !loading && (
 							<p className="col-12 text-center">Aucun article trouvé.</p>
 					  )}
@@ -47,5 +40,10 @@ function HomeScreen() {
 		</>
 	);
 }
+ListScreen.propTypes = {
+	apiUrl: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	Card: PropTypes.func.isRequired,
+};
 
-export default HomeScreen;
+export default ListScreen;
