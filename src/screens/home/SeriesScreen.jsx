@@ -7,7 +7,7 @@ function SeriesScreen() {
 			<ListScreen
 				apiUrl="http://api.php-blog-project.loc/serie"
 				title="Les séries"
-				Card={SerieCard}
+				OneCard={SerieCard}
 			/>
 		</>
 	);

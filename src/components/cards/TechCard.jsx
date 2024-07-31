@@ -8,7 +8,7 @@ function TechCard(props) {
 			<Card
 				title={tech.label}
 				imgSrc={tech.img_src}
-				link={"techs/details/" + tech.id_tech}
+				link={"/techs/details/" + tech.id_tech}
 				btnText="Voir"
 			/>
 		</>

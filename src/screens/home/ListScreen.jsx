@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
-function ListScreen({ apiUrl, title, Card }) {
+function ListScreen({ apiUrl, title, OneCard }) {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -27,12 +27,12 @@ function ListScreen({ apiUrl, title, Card }) {
 	return (
 		<>
 			<main className="mt-5 pt-3 mx-5 row">
-        <h2 className="text-center">{title}</h2>
+				<h2 className="text-center">{title}</h2>
 				{loading && (
 					<p className="col-12 text-center">Chargement des données...</p>
 				)}
 				{data.length > 0
-					? data.map((item, i) => <Card key={i} data={item} />)
+					? data.map((item, i) => <OneCard key={i} data={item} />)
 					: !loading && (
 							<p className="col-12 text-center">Aucun article trouvé.</p>
 					  )}
@@ -43,7 +43,9 @@ function ListScreen({ apiUrl, title, Card }) {
 ListScreen.propTypes = {
 	apiUrl: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
-	Card: PropTypes.func.isRequired,
+	OneCard: PropTypes.func.isRequired,
 };
 
 export default ListScreen;
+
+// OneCard, rien à voir avec le component Card. C'est une fonction ici

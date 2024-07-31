@@ -7,7 +7,7 @@ function TechsScreen() {
 			<ListScreen
 				apiUrl="http://api.php-blog-project.loc/tech"
 				title="Les Techs"
-				Card={TechCard}
+				OneCard={TechCard}
 			/>
 		</>
 	);
