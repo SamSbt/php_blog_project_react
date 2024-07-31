@@ -8,7 +8,7 @@ function ArticleCard(props) {
 			<Card
 				title={data.title}
 				imgSrc={data.img_src}
-				link={"articles/details/" + data.id_article}
+				link={"/articles/details/" + data.id_article}
 				btnText="Lire"
 			>
 				<p className="card-text" style={{ textAlign: "justify" }}>

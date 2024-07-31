@@ -5,7 +5,7 @@ function SeriesScreen() {
 	return (
 		<>
 			<ListScreen
-				apiUrl="http://api.php-blog-project.loc/serie"
+				apiUrl="http://api.php-blog-project.loc/serie?orderby=title"
 				title="Les séries"
 				OneCard={SerieCard}
 			/>
