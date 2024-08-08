@@ -11,10 +11,10 @@ function App() {
 		<>
 			<Navbar />
 			<div className="container">
-				{/* <HomeScreen /> */}
-				{/* <ArticleScreen /> */}
-				{/* <SeriesScreen /> */}
-				<TechsScreen />
+				<HomeScreen />
+				{/* <ArticleScreen />
+				<SeriesScreen />
+				<TechsScreen /> */}
 			</div>
 		</>
 	);
