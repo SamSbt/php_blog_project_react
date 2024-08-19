@@ -28,6 +28,7 @@ function AlertMessage(props) {
 		children: PropTypes.oneOfType([
 			PropTypes.arrayOf(PropTypes.element),
 			PropTypes.element,
+			PropTypes.string,
 		]),
 		className: PropTypes.string,
 		closeFn: PropTypes.func,

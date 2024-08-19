@@ -76,6 +76,7 @@ function ModalContact() {
 					children: "Une erreur est survenue lors de l'envoi du message.",
 					type: AlertType.DANGER,
 				});
+				resetForm();
 			}
 		};
 		submitData();
@@ -88,7 +89,7 @@ function ModalContact() {
 			: "form-control is-valid";
 	};
 
-	// fermer modal, reset form, et asquer l'alerte
+	// fermer modal, reset form, et masquer l'alerte
 	const resetForm = (reset = false) => {
 		closeBtnRef.current.click();
 		setTimeout(() => {
