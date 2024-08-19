@@ -60,7 +60,7 @@ function ModalContact() {
 				const alertMessage = (
 					<span>
 						Merci pour votre message {formState.fullname},<br />
-						vous recevrez très prochainement une réponse à l&apos;adresse mail
+						vous recevrez très prochainement une réponse à l&apos;adresse email
 						indiquée : {formState.email}
 					</span>
 				);
@@ -82,30 +82,31 @@ function ModalContact() {
 		submitData();
 	};
 
-	const getInputClass = (field) => {
-		if (formState[field] === "") return "form-control";
-		return formErrors[field]
-			? "form-control is-invalid"
-			: "form-control is-valid";
-	};
+		const getInputClass = (field) => {
+			if (formState[field] === "") return "form-control";
+			return formErrors[field]
+				? "form-control is-invalid"
+				: "form-control is-valid";
+		};
 
 	// fermer modal, reset form, et masquer l'alerte
 	const resetForm = (reset = false) => {
 		closeBtnRef.current.click();
-		setTimeout(() => {
-			setAlertProps({ show: false });
-			reset && setFormState({ fullname: "", email: "", message: "" });
-		}, 5000);
+		// si caché, user doit cliquer sur croix our faire disparaitre le message
+	// 	setTimeout(() => {
+	// 		setAlertProps({ show: false });
+	// 		reset && setFormState({ fullname: "", email: "", message: "" });
+	// 	}, 5000);
 	};
 
 	return (
 		<>
-			<AlertMessage
-				closeFn={() => {
-					setAlertProps({ show: false });
-				}}
-				{...alertProps}
-			/>
+				<AlertMessage
+					closeFn={() => {
+						setAlertProps({ show: false });
+					}}
+					{...alertProps}
+				/>
 			<div
 				className="modal fade"
 				id="myModal"
@@ -170,7 +171,6 @@ function ModalContact() {
 									<textarea
 										className={getInputClass("message")}
 										name="message"
-										type="text"
 										placeholder="Message"
 										style={{ height: "10rem" }}
 										value={formState.message}

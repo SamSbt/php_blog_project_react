@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-function ArticleScreen() {
+function TechArticlesScreen() {
 	const { id } = useParams();
 	const [data, setData] = useState({});
 	const [loading, setLoading] = useState(true);
@@ -9,7 +9,7 @@ function ArticleScreen() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const url = `http://api.php-blog-project.loc/article/${id}`;
+				const url = `http://api.php-blog-project.loc/tech/${id}`;
 				const response = await fetch(url);
 				if (!response.ok) {
 					throw new Error("Erreur de réseau");
@@ -33,22 +33,15 @@ function ArticleScreen() {
 				{loading && (
 					<p className="col-12 text-center">Chargement des données...</p>
 				)}
-				{"id_article" in data ? (
+				{"id_tech" in data ? (
 					<div className="col-12 px-5">
 						<div className="text-center mb-3">
-							<h1>{data.title}</h1>
-							<img src={data.img_src} alt={data.title} width={300} />
+							<h2 className="m-4" >Articles de la tech {data.label}</h2>
+							<img src={data.img_src} alt={data.label} width={300} />
 						</div>
-						<p style={{ textAlign: "justify" }}>{data.summary}</p>
-						<p>
-							Publié le{" "}
-							{new Date(data.published_at).toLocaleDateString("fr-FR")}
-							{data.updated_at &&
-								" (Mis à jour le " +
-									new Date(data.updated_at).toLocaleDateString("fr-FR") +
-									")"}
-						</p>
+            <div className="mt-5 text-center">Articles relatifs à la tech ici</div>
 					</div>
+          
 				) : (
 					!loading && (
 						<p className="col-12 text-center">Aucun article trouvé.</p>
@@ -59,4 +52,4 @@ function ArticleScreen() {
 	);
 }
 
-export default ArticleScreen;
+export default TechArticlesScreen;
