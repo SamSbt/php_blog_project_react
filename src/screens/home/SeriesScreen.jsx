@@ -1,5 +1,5 @@
 import SerieCard from "../../components/cards/SerieCard";
-import ListScreen from "./ListScreen";
+import ListScreen from "../../components/listScreen/ListScreen";
 
 function SeriesScreen() {
 	return (
@@ -7,7 +7,7 @@ function SeriesScreen() {
 			<ListScreen
 				apiUrl="http://api.php-blog-project.loc/serie?orderby=title"
 				title="Les séries"
-				OneCard={SerieCard}
+				Card={SerieCard}
 			/>
 		</>
 	);

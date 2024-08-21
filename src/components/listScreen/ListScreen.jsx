@@ -1,7 +1,6 @@
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
-
-function ListScreen({ apiUrl, title, OneCard }) {
+function ListScreen({ apiUrl, title, Card }) {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -13,6 +12,7 @@ function ListScreen({ apiUrl, title, OneCard }) {
 					throw new Error("Erreur de réseau");
 				}
 				const result = await response.json();
+				console.log(result);
 				setData(result || []);
 			} catch (error) {
 				console.log(error);
@@ -20,32 +20,26 @@ function ListScreen({ apiUrl, title, OneCard }) {
 				setLoading(false);
 			}
 		};
-
 		fetchData();
 	}, []);
 
 	return (
-		<>
-			<main className="mt-5 pt-3 mx-5 row">
-				<h2 className="text-center">{title}</h2>
-				{loading && (
-					<p className="col-12 text-center">Chargement des données...</p>
-				)}
-				{data.length > 0
-					? data.map((item, i) => <OneCard key={i} data={item} />)
-					: !loading && (
-							<p className="col-12 text-center">Aucun article trouvé.</p>
-					  )}
-			</main>
-		</>
+		<main className="mt-5 pt-3 row">
+			<h2>{title}</h2>
+			{loading && (
+				<p className="col-12 text-center">Chargement des données ...</p>
+			)}
+			{data.length > 0
+				? data.map((item, i) => <Card key={i} data={item} />)
+				: !loading && (
+						<p className="col-12 text-center">Aucune donnée trouvée ...</p>
+				  )}
+		</main>
 	);
 }
 ListScreen.propTypes = {
 	apiUrl: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
-	OneCard: PropTypes.func.isRequired,
+	Card: PropTypes.func.isRequired,
 };
-
 export default ListScreen;
-
-// OneCard, rien à voir avec le component Card. C'est une fonction ici

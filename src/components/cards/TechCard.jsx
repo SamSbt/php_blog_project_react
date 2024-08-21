@@ -4,17 +4,14 @@ import Card from "./Card";
 function TechCard(props) {
 	const { data } = props;
 	return (
-		<>
-			<Card
-				title={data.label}
-				imgSrc={data.img_src}
-				link={"/techs/details/" + data.id_tech}
-				btnText="Voir"
-			/>
-		</>
+		<Card
+			title={data.label}
+			imgSrc={data.img_src}
+			link={"/techs/articles/" + data.id_tech}
+			btnText="Voir"
+		/>
 	);
 }
-
 TechCard.propTypes = {
 	data: PropTypes.shape({
 		id_tech: PropTypes.number.isRequired,
@@ -23,5 +20,4 @@ TechCard.propTypes = {
 		is_deleted: PropTypes.bool,
 	}),
 };
-
 export default TechCard;

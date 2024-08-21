@@ -1,5 +1,5 @@
 import ArticleCard from "../../components/cards/ArticleCard";
-import ListScreen from "./ListScreen";
+import ListScreen from "../../components/listScreen/ListScreen";
 
 function HomeScreen() {
 	return (
@@ -7,7 +7,7 @@ function HomeScreen() {
 			<ListScreen
 				apiUrl="http://api.php-blog-project.loc/article?orderby=published_at&sort=DESC&limit=12"
 				title="Accueil"
-				OneCard={ArticleCard}
+				Card={ArticleCard}
 			/>
 		</>
 	);

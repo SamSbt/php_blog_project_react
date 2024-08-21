@@ -1,26 +1,26 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import ListScreen from "../../components/listScreen/ListScreen";
+import ArticleCard from "../../components/cards/ArticleCard";
 
 function SerieArticlesScreen() {
 	const { id } = useParams();
-	const [data, setData] = useState({});
-	const [loading, setLoading] = useState(true);
+	const [serie, setSerie] = useState({});
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const url = `http://api.php-blog-project.loc/serie/${id}`;
-				const response = await fetch(url);
+				const response = await fetch(
+					"http://api.php-blog-project.loc/serie/" + id
+				);
 				if (!response.ok) {
 					throw new Error("Erreur de réseau");
 				}
 				const result = await response.json();
 				// console.log(result);
-				setData(result || {});
+				setSerie(result || {});
 			} catch (error) {
 				console.log(error);
-			} finally {
-				setLoading(false);
 			}
 		};
 
@@ -29,24 +29,11 @@ function SerieArticlesScreen() {
 
 	return (
 		<>
-			<main className="mt-5 pt-3 row">
-				{loading && (
-					<p className="col-12 text-center">Chargement des données...</p>
-				)}
-				{"id_serie" in data ? (
-					<div className="col-12 px-5">
-						<div className="text-center mb-3">
-							<h1 className="m-4">{data.title}</h1>
-							<img src={data.img_src} alt={data.title} width={300} />
-						</div>
-						<p className="mt-5 text-center" style={{ textAlign: "justify" }}>{data.summary}</p>
-					</div>
-				) : (
-					!loading && (
-						<p className="col-12 text-center">Aucun article trouvé.</p>
-					)
-				)}
-			</main>
+			<ListScreen
+				apiUrl={"http://api.php-blog-project.loc/article?where=id_serie=" + id}
+				title={"Articles de la Série " + (serie.title || "")}
+				Card={ArticleCard}
+			/>
 		</>
 	);
 }

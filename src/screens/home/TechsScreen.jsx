@@ -1,5 +1,5 @@
 import TechCard from "../../components/cards/TechCard";
-import ListScreen from "./ListScreen";
+import ListScreen from "../../components/listScreen/ListScreen";
 
 function TechsScreen() {
 	return (
@@ -7,7 +7,7 @@ function TechsScreen() {
 			<ListScreen
 				apiUrl="http://api.php-blog-project.loc/tech?orderby=label"
 				title="Les Techs"
-				OneCard={TechCard}
+				Card={TechCard}
 			/>
 		</>
 	);

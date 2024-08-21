@@ -3,16 +3,16 @@ import ModalContact from "../contact/ModalContact";
 import { Link } from "react-router-dom";
 
 function Navbar() {
-	const [activeLink, setActiveLink] = useState("/home");
+	const [activeLink, setActiveLink] = useState("/");
 
-	// sans react router :
-	// const handleNavLinkClick = (event) => {
-	// 	event.preventDefault();
-	// 	console.log("href=" + event.target.href);
-	// 	const url = new URL(event.target.href);
-	// 	console.log("path=" + url.pathname);
-	// 	setActiveLink(url.pathname);
-	// };
+
+	const handleNavLinkClick = (event) => {
+		// event.preventDefault();
+		// console.log("href=" + event.target.href);
+		const url = new URL(event.target.href);
+		// console.log("path=" + url.pathname);
+		setActiveLink(url.pathname);
+	};
 
 	return (
 		<>
@@ -36,9 +36,11 @@ function Navbar() {
 						<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 							<li className="nav-item me-2">
 								<Link
-									className={"nav-link" + (activeLink == "/" ? " active" : "")}
+									className={
+										"nav-link" + (activeLink == "/" ? " active" : "")
+									}
 									to="/"
-									onClick={() => setActiveLink("/")}
+									onClick={handleNavLinkClick}
 								>
 									Accueil
 								</Link>
@@ -49,7 +51,7 @@ function Navbar() {
 										"nav-link" + (activeLink == "/series" ? " active" : "")
 									}
 									to="/series"
-									onClick={() => setActiveLink("/series")}
+									onClick={handleNavLinkClick}
 								>
 									Séries
 								</Link>
@@ -60,7 +62,7 @@ function Navbar() {
 										"nav-link" + (activeLink == "/techs" ? " active" : "")
 									}
 									to="/techs"
-									onClick={() => setActiveLink("/techs")}
+									onClick={handleNavLinkClick}
 								>
 									Techs
 								</Link>
