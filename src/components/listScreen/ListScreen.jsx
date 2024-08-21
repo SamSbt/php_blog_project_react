@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+
 function ListScreen({ apiUrl, title, Card }) {
 	const [data, setData] = useState([]);
 	const [loading, setLoading] = useState(true);
